@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+
+<div>
+    <div class="row gx-5">
+        <div class="col" style="margin-top:15px; margin-bottom:5px;">
+            <h2>Duyurular</h2>
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Duyuru</th>
+        <th>Duyuru Görseli</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (item.AboutStatus == true)
+        {
+            <tr>
+                <th>@item.AboutID</th>
+                <td>@item.AboutDetails1</td>
+                <td>@item.AboutImage1</td>
+            </tr>
+         }
+      }
+
+
+</table>
+<div>
+</div>

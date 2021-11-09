@@ -1,0 +1,46 @@
+﻿@using EntityLayer.Concrete
+@model List<Admin>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{ string status = "";}
+@{ string statusButton = "";}
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Admin Kullanıcı Adı</th>
+        <th>YETKİ</th>
+        <th>Aktif/PASİF YAP</th>
+        <th>YETKİSİNİ DEĞİŞTİR</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (item.AdminStatus == true)
+        {
+            status = "Pasif Yap";
+        }
+        if (item.AdminStatus == false)
+        {
+            status = "Aktif Yap";
+        }
+        if (item.AdminStatus == true)
+        {
+            statusButton = "btn btn-danger";
+        }
+        if (item.AdminStatus == false)
+        {
+            statusButton = "btn btn-warning";
+        }
+<tr>
+    <th>@item.AdminID</th>
+    <td>@item.AdminUserName</td>
+    <td>@item.Role.RoleName</td>
+    <td><a href="/Authorization/AktifveyaPasifDurum/@item.AdminID" class="@statusButton">@status</a></td>
+    <td><a href="/Authorization/EditAdmin/@item.AdminID" class="btn btn-warning">Yetkisini Değiştir</a></td>
+</tr>
+    }
+</table>
+<a href="/Register/Index/" class="btn btn-dark">Yeni Admin Ekle</a>
+<script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
